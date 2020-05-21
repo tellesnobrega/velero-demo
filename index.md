@@ -3,7 +3,7 @@
 The goal of this post is to provide a step-by-step tutorial on how to set up, backup and restore a WordPress application
 running on Minikube, using Velero for Backup and Restore and Minio as S3-like Object Storage.
 
-From velero (documentation)[https://velero.io/docs/v1.0.0/restic/] we find that velero allows the user to take snapshots of persistent volumes as part of the backups if you are using one of the supported cloud providers’ block storage offerings (Amazon EBS Volumes, Azure Managed Disks, Google Persistent Disks).
+From velero [documentation](https://velero.io/docs/v1.0.0/restic/) we find that velero allows the user to take snapshots of persistent volumes as part of the backups if you are using one of the supported cloud providers’ block storage offerings (Amazon EBS Volumes, Azure Managed Disks, Google Persistent Disks).
 
 But, if you are using a volume type that does not have a native snapshot concept, velero integrates with restic to enable it. The downside is that restic does not support *hostPath* volume type, so to make this tutorial possible, we chose to use the *local* volume type.
 
