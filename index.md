@@ -52,14 +52,14 @@ minikube start --driver=none
 
 Now we need to install velero to our kubernetes cluster.
 
-#### Download Velero 1.3.2 Release
+##### Download Velero 1.3.2 Release
 ```
 wget https://github.com/vmware-tanzu/velero/releases/download/v1.3.2/velero-v1.3.2-linux-amd64.tar.gz
 tar zxf velero-v1.3.2-linux-amd64.tar.gz
 sudo mv velero-v1.3.2-linux-amd64/velero /usr/local/bin/
 rm -rf velero*
 ```
-#### Install Velero in the Kubernetes Cluster
+##### Install Velero in the Kubernetes Cluster
 ```
 velero install \
    --provider aws \
@@ -74,7 +74,7 @@ velero install \
 
 In order to easy our management of the *local* volume types, we install the local-volume-provider. It detects the volumes under the chosen path and creates the persistent volumes to be used by the application.
 
-#### Install Helm
+##### Install Helm
 ```
 yum -y install openssl
 curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3
@@ -82,7 +82,7 @@ chmod 700 get_helm.sh
 ./get_helm.sh
 ```
 
-#### Install local-volume-provider
+##### Install local-volume-provider
 ```
 git clone https://github.com/kubernetes-sigs/sig-storage-local-static-provisioner.git
 cd sig-storage-local-static-provisioner/
@@ -93,12 +93,12 @@ kubectl create -f deployment/kubernetes/provisioner_generated.yaml
 
 ### Deploy WordPress application
 
-#### Clone this repo
+##### Clone this repo
 ```
 git clone https://github.com/tellesnobrega/velero-demo.git
 ```
 
-#### Deploy application
+##### Deploy application
 ```
 mkdir /mnt/disks
 for vol in pv1 pv2; do
@@ -111,7 +111,7 @@ kubectl create -n wordpress secret generic mysql-pass --from-literal=password=<Y
 kubectl create -n wordpress -f velero-demo/mysql-deployment.yaml
 kubectl create -n wordpress -f velero-demo/wordpress-deployment.yaml
 ```
-#### Check for wordpress url
+##### Check for wordpress url
 ```
 minikube -n wordpress service wordpress --url
 ```
@@ -126,7 +126,7 @@ Go to New Post -> Write a new post.
 
 ### Run backup
 
-#### Annotate each pod that you want to backup
+##### Annotate each pod that you want to backup
 
 Each pod with a persistent volume needs to be annotated in order for restic to detect them and back them up.
 For that run the command below:
@@ -143,17 +143,17 @@ volumeMounts:
           mountPath: /var/lib/mysql
 ```
 
-#### Run backup command
+##### Run backup command
 ```
 velero backup create NAME OPTIONS
 ```
 
-#### Destroy WordPress deployment
+##### Destroy WordPress deployment
 ```
 kubectl delete ns wordpress
 ```
 
-#### Run restore command
+##### Run restore command
 
 To restore the application from backup you need to run the command below:
 
