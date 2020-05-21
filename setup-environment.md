@@ -1,6 +1,3 @@
----
-layout: default
----
 # velero-demo on Centos 7
 
 ## Setup Environment
