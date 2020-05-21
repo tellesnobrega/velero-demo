@@ -2,7 +2,7 @@
 
 ### Setup Environment
 
-Start your environment setup by following this [tutorial](https://github.com/tellesnobrega/velero-demo/blob/master/setup-environment.md)
+Start your environment setup by following this [tutorial](https://tellesnobrega.github.io/tellesnobrega/velero-demo/setup-environment.md)
 
 ### Add some content to WordPress
 
