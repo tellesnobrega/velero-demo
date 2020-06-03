@@ -1,4 +1,4 @@
-# Running Backup&Restore on a Kubernetes environment using Velero and Minio
+# Running Backup & Restore on a Kubernetes environment using Velero and Minio
 
 The goal of this post is to provide a step-by-step tutorial on how to set up, backup and restore a WordPress application
 running on Minikube, using Velero for Backup and Restore and Minio as S3-like Object Storage.
